@@ -1,3 +1,5 @@
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <h3>Tambah Anggota</h3>
 <form action="../aksi/aksi_tambah.php" method="POST">
     <div class="content">
@@ -14,16 +16,16 @@
                     <select name="tgl_lahir" class="form">
                         <?php 
                         for($tanggal = 1; $tanggal <= 31; $tanggal++) {
-                           if($tanggal < 10) {
-                               echo '<option value="0'. $tanggal .'">0'. $tanggal .'</option>';
-                           }
-                           else {
-                               echo '<option value="'. $tanggal .'">'. $tanggal .'</option>';
-                           }
-                       }
-                       ?>
-                   </select>
-                   <select name="bln_lahir" class="form">
+                         if($tanggal < 10) {
+                             echo '<option value="0'. $tanggal .'">0'. $tanggal .'</option>';
+                         }
+                         else {
+                             echo '<option value="'. $tanggal .'">'. $tanggal .'</option>';
+                         }
+                     }
+                     ?>
+                 </select>
+                 <select name="bln_lahir" class="form">
                     <?php 
                     for($bulan = 1; $bulan <= 12; $bulan++) {
                         if($bulan < 10) {
@@ -66,7 +68,7 @@
         </tr>
         <tr>
             <td><label for="hp">No. HP</label></td>
-            <td colspan="3"><input name="hp" id="hp" type="number" class="form"></td>
+            <td colspan="3"><input name="no_hp" id="no_hp" type="number" class="form"></td>
         </tr>
         <tr>
             <td><label for="email">Email</label></td>
@@ -84,3 +86,8 @@
 </div>
 <input type="submit" class="btn" value="Simpan">
 </form>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+  <script src="assets/js/popper.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
