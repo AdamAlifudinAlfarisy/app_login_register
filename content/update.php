@@ -1,5 +1,16 @@
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-dark bg-dark mr-auto">
+      <a class="navbar-brand" href="beranda.php">
+        <img src="assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Beranda
+    </a>
+</nav>
+
+<a href="logout.php" class="form-inline my-2 my-lg-0 btn btn-secondary">Logout</a>
+</nav>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <?php 
 $ID         = $_GET['id'];
 $query      = mysqli_query($connect, "SELECT * FROM anggota WHERE ID = $ID");
@@ -13,11 +24,13 @@ $thn_lahir  = date('Y', strtotime($data['tanggal_lahir']));
 <form action="aksi/aksi_update.php" method="POST">
     <input type="hidden" name="id" value="<?php echo $ID; ?>">
     <div class="content">
-        <table class="table-form" border="0" width="100%" cellpadding="0" cellspacing="0">
+        <table class="table-form" border="0" width="100%" cellpadding="0" cellspacing="0">                  
             <tr>
-                <td width="20%"><label for="nama">Nama Lengkap</label></td>
-                <td colspan="3"><input name="nama" id="nama" type="text" class="form" value="<?php echo $data['nama_lengkap']; ?>"></td>
-            </tr>
+                <td><label for="nama">Nama Lengkap</label></td>
+                <div class="col-sm-2">
+                    <td><input name="nama" id="nama" type="text" class="form-control" value="<?php echo $data['nama_lengkap']; ?>"></td>
+                </div>                   
+            </tr>            
             <tr>
                 <td><label for="tempat_lahir">Tempat Lahir</label></td>
                 <td><input name="tempat_lahir" id="tempat_lahir" type="text" class="form" value="<?php echo $data['tempat_lahir']; ?>"></td>
@@ -96,8 +109,8 @@ $thn_lahir  = date('Y', strtotime($data['tanggal_lahir']));
 </div>
 <input type="submit" class="btn btn-dark" value="Simpan">
 </form>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>

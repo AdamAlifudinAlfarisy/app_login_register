@@ -1,5 +1,16 @@
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-dark bg-dark mr-auto">
+      <a class="navbar-brand" href="beranda.php">
+        <img src="assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Beranda
+    </a>
+</nav>
+
+<a href="logout.php" class="form-inline my-2 my-lg-0 btn btn-secondary">Logout</a>
+</nav>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <?php 
 $ID = $_GET['id'];
 $query = mysqli_query($connect, "SELECT * FROM anggota WHERE ID = $ID");
@@ -46,8 +57,8 @@ $data = mysqli_fetch_array($query);
     </table>
 </div>
 <a href="index.php" class="btn btn-dark">Kembali</a>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>

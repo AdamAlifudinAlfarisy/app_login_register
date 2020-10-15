@@ -18,35 +18,28 @@ if(! isset($_SESSION['is_login']))
 </head>
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="#">WB</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-dark bg-dark mr-auto">
+      <a class="navbar-brand" href="beranda.php">
+        <img src="assets/img/home.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Beranda
+      </a>
+    </nav>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="beranda.php">Home <span class="sr-only">(current)</span></a>
-        </li>
-      </ul>
+    <a href="logout.php" class="form-inline my-2 my-lg-0 btn btn-secondary">Logout</a>
+</nav>
 
-      <a href="logout.php" class="form-inline my-2 my-lg-0 btn btn-secondary">Logout</a>
+<div class="jumbotron">
+  <h1 class="display-4 mt-2">Selamat Datang <?php echo $_SESSION['nama']; ?></h1>
+  <p class="lead">Silahkan mengisi form pendaftaran online dengan mengklik tombol dibawah ini</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href="index.php" role="button">Buka Pendaftaran Online</a>
+</div>
 
-    </div>
-  </nav>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="assets/js/jquery-3.5.1.slim.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
 
-    <div class="jumbotron">
-      <h1 class="display-4">Selamat Datang <?php echo $_SESSION['nama']; ?></h1>
-      <p class="lead">Silahkan mengisi form pendaftaran online dengan mengklik tombol dibawah ini</p>
-      <hr class="my-4">
-      <a class="btn btn-primary btn-lg" href="index.php" role="button">Buka Pendaftaran Online</a>
-    </div>
-
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="assets/js/jquery-3.5.1.slim.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
- 
 </body>
 </html>

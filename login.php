@@ -14,6 +14,40 @@ if(isset($_COOKIE['username']))
   header('location:beranda.php');
 }
 
+// define variables and set to empty values
+$usernameErr = $passwordErr = "";
+$username = $password = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["username"])) {
+    $usernameErr = "Masukan username";
+  } 
+  else {
+    $username = test_input($_POST["username"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z ]*$/",$username)) {
+      $usernameErr = "username anda tidak terdaftar"; 
+    }
+  }
+
+  if (empty($_POST["password"])) {
+    $passwordErr = "password harus di isi";
+  } else {
+    $password = test_input($_POST["password"]);
+    // check if e-mail address is well-formed
+    if (!filter_var($password, FILTER_VALIDATE_BOOLEAN)) {
+      $passwordErr = "password yang anda masukan salah"; 
+    }
+  }
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 if(isset($_POST['login']))
 {
   $username = $_POST['username'];
@@ -53,26 +87,12 @@ if(isset($_POST['login']))
       padding-top: 40px;
       padding-bottom: 40px;
     }
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
   </style>
-  <!-- Custom styles for this template -->
+  <!-- Custom styles  -->
 </head>
 <body class="text-center">
   <div class="container">
-    <form class="form-signin" method="post" action="">
+    <form method="post" action="">
       <img class="mb-4 mr-2" src="assets/img/html5.svg" alt="" width="72" height="72">
       <img class="mb-4 mr-2" src="assets/img/php.svg" alt="" width="72" height="72">
       <img class="mb-4 mr-2" src="assets/img/bootstrap.svg" alt="" width="72" height="72">
@@ -83,8 +103,10 @@ if(isset($_POST['login']))
       <div class="col-4 mx-auto">
         <label for="username" class="sr-only">Username</label>
         <input type="text" id="username" class="form-control mb-2" placeholder="Username" name="username" required autofocus>
+        <span class="text-danger"><?php echo $usernameErr;?></span>
         <label for="password" class="sr-only">Password</label>
         <input type="password" id="password" class="form-control mb-2" placeholder="Password" name="password" required>
+        <span class="text-danger mb-2"><?php echo $passwordErr;?></span>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me" name="remember"> Remember me
