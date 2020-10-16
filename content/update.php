@@ -24,31 +24,34 @@ $thn_lahir  = date('Y', strtotime($data['tanggal_lahir']));
 <form action="aksi/aksi_update.php" method="POST">
     <input type="hidden" name="id" value="<?php echo $ID; ?>">
     <div class="content">
-        <table class="table-form" border="0" width="100%" cellpadding="0" cellspacing="0">                  
-            <tr>
-                <td><label for="nama">Nama Lengkap</label></td>
-                <div class="col-sm-2">
-                    <td><input name="nama" id="nama" type="text" class="form-control" value="<?php echo $data['nama_lengkap']; ?>"></td>
-                </div>                   
-            </tr>            
-            <tr>
-                <td><label for="tempat_lahir">Tempat Lahir</label></td>
-                <td><input name="tempat_lahir" id="tempat_lahir" type="text" class="form" value="<?php echo $data['tempat_lahir']; ?>"></td>
-                <td><label>Tanggal Lahir</label></td>
-                <td>
-                    <select name="tgl_lahir" class="form">
+        <div class="form-group">                
+            <label for="nama">Nama Lengkap</label></td>
+            <td><input name="nama" id="nama" type="text" class="form-control col-5" value="<?php echo $data['nama_lengkap']; ?>">
+            </div>
+            <div class="form-group">
+                <label for="tempat_lahir">Tempat Lahir</label>
+                <input name="tempat_lahir" id="tempat_lahir" type="text" class="form-control col-5" value="<?php echo $data['tempat_lahir']; ?>">
+            </div>
+            <div class="form-group">
+                <label>Tanggal Lahir</label>
+            </div>                
+            <div class="form-row">
+                <div class="col-auto">                    
+                    <select name="tgl_lahir" class="form-control">
                         <?php 
                         for($tanggal = 1; $tanggal <= 31; $tanggal++) {
-                         if($tanggal < 10) {
-                             echo '<option value="0'. $tanggal .'"'. ($tgl_lahir == 0 . $tanggal ? ' selected="selected"' : '') .'>0'. $tanggal .'</option>';
-                         }
-                         else {
-                             echo '<option value="'. $tanggal .'"'. ($tgl_lahir == $tanggal ? ' selected="selected"' : '') .'>'. $tanggal .'</option>';
-                         }
-                     }
-                     ?>
-                 </select>
-                 <select name="bln_lahir" class="form">
+                           if($tanggal < 10) {
+                               echo '<option value="0'. $tanggal .'"'. ($tgl_lahir == 0 . $tanggal ? ' selected="selected"' : '') .'>0'. $tanggal .'</option>';
+                           }
+                           else {
+                               echo '<option value="'. $tanggal .'"'. ($tgl_lahir == $tanggal ? ' selected="selected"' : '') .'>'. $tanggal .'</option>';
+                           }
+                       }
+                       ?>
+                   </select>
+               </div>
+               <div class="col-auto">                 
+                   <select name="bln_lahir" class="form-control">
                     <?php 
                     for($bulan = 1; $bulan <= 12; $bulan++) {
                         if($bulan < 10) {
@@ -60,54 +63,53 @@ $thn_lahir  = date('Y', strtotime($data['tanggal_lahir']));
                     }
                     ?>
                 </select>
-                <select name="thn_lahir" class="form">
+            </div>
+            <div class="col-auto">                
+                <select name="thn_lahir" class="form-control">
                     <?php 
                     for($tahun = date('Y'); $tahun >= 1980; $tahun--) {
                         echo '<option value="'. $tahun .'"'. ($thn_lahir == $tahun ? ' selected="selected"' : '') .'>'. $tahun .'</option>';
                     }
                     ?>
                 </select>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top"><label for="alamat">Alamat</label></td>
-            <td valign="top" colspan="2">
-                <textarea name="alamat" id="alamat" class="form" cols="50" rows="8"><?php echo $data['alamat']; ?></textarea>
-            </td>
-            <td valign="top">
-                <div>
-                    <label for="kota">Kota</label>
-                    <input type="text" name="kota" id="kota" class="form" value="<?php echo $data['kota']; ?>">
-                </div>
-                <div>
-                    <label for="negara">Negara</label>
-                    <input type="text" name="negara" id="negara" class="form" value="<?php echo $data['negara']; ?>">
-                </div>
-                <div>
-                    <label for="kode_pos">Kode Pos</label>
-                    <input type="number" name="kode_pos" id="kode_pos" class="form" value="<?php echo $data['kode_pos']; ?>">
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td><label for="hp">No. HP</label></td>
-            <td colspan="3"><input name="hp" id="hp" type="number" class="form" value="<?php echo $data['no_hp']; ?>"></td>
-        </tr>
-        <tr>
-            <td><label for="email">Email</label></td>
-            <td colspan="3"><input name="email" id="email" type="text" class="form" value="<?php echo $data['email']; ?>"></td>
-        </tr>
-        <tr>
-            <td><label for="tinggi_badan">Tinggi Badan</label></td>
-            <td colspan="3"><input name="tinggi_badan" id="tinggi_badan" type="number" class="form" value="<?php echo $data['tinggi_badan']; ?>"></td>
-        </tr>
-        <tr>
-            <td><label for="berat_badan">Berat Badan</label></td>
-            <td colspan="3"><input name="berat_badan" id="berat_badan" type="number" class="form" value="<?php echo $data['berat_badan']; ?>"></td>
-        </tr>
-    </table>
+            </div>
+        </div>
+        <div class="form-group mt-2">            
+            <label for="alamat">Alamat</label>
+            <textarea name="alamat" id="alamat" class="form-control col-5" rows="5"><?php echo $data['alamat']; ?></textarea>
+        </div>
+            <div class="form-group">
+                <label for="kota">Kota</label>
+                <input type="text" name="kota" id="kota" class="form-control col-2" value="<?php echo $data['kota']; ?>">
+            </div>
+            <div>
+                <label for="negara">Negara</label>
+                <input type="text" name="negara" id="negara" class="form-control col-2" value="<?php echo $data['negara']; ?>">
+            </div class="form-group">
+            <div>
+                <label for="kode_pos">Kode Pos</label>
+                <input type="number" name="kode_pos" id="kode_pos" class="form-control col-2" value="<?php echo $data['kode_pos']; ?>">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td><label for="hp">No. HP</label></td>
+        <td colspan="3"><input name="hp" id="hp" type="number" class="form-control col-2" value="<?php echo $data['no_hp']; ?>"></td>
+    </tr>
+    <tr>
+        <td><label for="email">Email</label></td>
+        <td colspan="3"><input name="email" id="email" type="text" class="form-control col-3" value="<?php echo $data['email']; ?>"></td>
+    </tr>
+    <tr>
+        <td><label for="tinggi_badan">Tinggi Badan</label></td>
+        <td colspan="3"><input name="tinggi_badan" id="tinggi_badan" type="number" class="form-control col-1" value="<?php echo $data['tinggi_badan']; ?>"></td>
+    </tr>
+    <tr>
+        <td><label for="berat_badan">Berat Badan</label></td>
+        <td colspan="3"><input name="berat_badan" id="berat_badan" type="number" class="form-control col-1" value="<?php echo $data['berat_badan']; ?>"></td>
+    </tr>
 </div>
-<input type="submit" class="btn btn-dark" value="Simpan">
+<input type="submit" class="btn btn-dark mb-2" value="Simpan">
 </form>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
